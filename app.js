@@ -7,6 +7,8 @@ var ejs = require('ejs');
 var expressVue = require("express-vue");
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+var taskFlowRouter = require('./routes/task-flow')
+var redirectRouter = require('./routes/redirect-task-flow')
 
 var app = express();
 
@@ -28,7 +30,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-
+app.use('/task-flow', taskFlowRouter);
+app.use('/task-flow/redirect', redirectRouter);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
